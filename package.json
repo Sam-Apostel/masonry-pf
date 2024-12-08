@@ -1,0 +1,29 @@
+{
+  "name": "masonry-pf",
+  "version": "0.0.1",
+  "description": "css masonry grid polyfill",
+  "license": "MIT",
+  "repository": "https://github.com/Sam-Apostel/masonry-pf",
+  "author": {
+    "name": "Sam Apostel",
+    "url": "https://github.com/Sam-Apostel"
+  },
+  "scripts": {
+    "build": "tsc",
+    "ci": "npm run build && npm run check-format && npm run check-exports",
+    "format": "prettier --write .",
+    "check-format": "prettier --check .",
+    "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm"
+  },
+  "main": "dist/index.js",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.17.1",
+    "@preconstruct/cli": "^2.8.10",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.2"
+  }
+}
