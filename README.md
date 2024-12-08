@@ -72,26 +72,25 @@ You can use this package without any build tooling. Paste this in an html file a
     }
   </style>
   <script type="module">
-    import { registerMasonry } from "masonry-pf";
+    import { registerMasonry } from 'masonry-pf';
 
     registerMasonry(gallery);
   </script>
 </head>
 <body>
-    <div id="gallery">
-      <img src="https://picsum.photos/200/300" height="300" />
-      <img src="https://picsum.photos/200/225" height="225" />
-      <img src="https://picsum.photos/200/150" height="150" />
-      <img src="https://picsum.photos/200/150" height="150" />
-      <img src="https://picsum.photos/200/225" height="225" />
-      <img src="https://picsum.photos/200/300" height="300" />
-      <img src="https://picsum.photos/200/300" height="300" />
-      <img src="https://picsum.photos/200/225" height="225" />
-      <img src="https://picsum.photos/200/150" height="150" />
-      <img src="https://picsum.photos/200/150" height="150" />
-      <img src="https://picsum.photos/200/225" height="225" />
-      <img src="https://picsum.photos/200/300" height="300" />
-    </div>
+  <div id="gallery">
+    <img src="https://picsum.photos/200/300" height="300" />
+    <img src="https://picsum.photos/200/225" height="225" />
+    <img src="https://picsum.photos/200/150" height="150" />
+    <img src="https://picsum.photos/200/150" height="150" />
+    <img src="https://picsum.photos/200/225" height="225" />
+    <img src="https://picsum.photos/200/300" height="300" />
+    <img src="https://picsum.photos/200/300" height="300" />
+    <img src="https://picsum.photos/200/225" height="225" />
+    <img src="https://picsum.photos/200/150" height="150" />
+    <img src="https://picsum.photos/200/150" height="150" />
+    <img src="https://picsum.photos/200/225" height="225" />
+    <img src="https://picsum.photos/200/300" height="300" />
+  </div>
 </body>
 ```
-
