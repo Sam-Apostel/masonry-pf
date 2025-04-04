@@ -1,5 +1,11 @@
 # masonry-pf
 
+## 1.1.1
+
+### Patch Changes
+
+- ef45fcb: fix v1.1.0 not working
+
 ## 1.1.0
 
 ### Minor Changes
