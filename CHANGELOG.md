@@ -1,5 +1,11 @@
 # masonry-pf
 
+## 1.1.0
+
+### Minor Changes
+
+- 387cd0f: Added support for horizontal masonry layouts
+
 ## 1.0.0
 
 ### Major Changes
