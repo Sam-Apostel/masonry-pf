@@ -1,8 +1,8 @@
 # Masonry polyfill
 
-This package provides an absolutely tiny (0.6KB) polyfill for css `grid-template-rows: masonry`.
+This package provides an absolutely tiny (0.6KB) polyfill for css `grid-template-rows: masonry` or `grid-template-columns: masonry`.
 
-`registerMasonry` is a function that takes in an HTMLElement and adjusts the top margins of it's children to achieve masonry layout for browsers that don't support it yet.
+`registerMasonry` is a function that takes in an HTMLElement and adjusts the top margins of its children to achieve masonry layout for browsers that don't support it yet.
 
 Nothing happens in browsers that support masonry.
 
@@ -58,7 +58,7 @@ You can use this package without any build tooling. Paste this in an html file a
   <script type="importmap">
     {
       "imports": {
-        "masonry-pf": "https://esm.run/masonry-pf@0.0.2"
+        "masonry-pf": "https://esm.run/masonry-pf@1.1.0"
       }
     }
   </script>
