@@ -1,6 +1,8 @@
+![Package size](https://badgen.net/bundlephobia/minzip/masonry-pf@1.0.0)
+
 # Masonry polyfill
 
-This package provides an absolutely tiny (0.6KB) polyfill for css `grid-template-rows: masonry` or `grid-template-columns: masonry`.
+This package provides an absolutely tiny (< 500B) polyfill for css `grid-template-rows: masonry` or `grid-template-columns: masonry`.
 
 `registerMasonry` is a function that takes in an HTMLElement and adjusts the top margins of its children to achieve masonry layout for browsers that don't support it yet.
 
@@ -84,7 +86,8 @@ You can use this package without any build tooling. Paste this in an html file a
   <script type="module">
     import { registerMasonry } from 'masonry-pf';
 
-    registerMasonry(gallery);
+    registerMasonry(horizontal);
+    registerMasonry(vertical);
   </script>
 </head>
 <body>
@@ -118,3 +121,15 @@ You can use this package without any build tooling. Paste this in an html file a
   </div>
 </body>
 ```
+
+## Package size
+
+If you are extremely worried about package size and speed and only using vertical masonry, you can keep using v1.0.0
+
+v1.1.1 started checking all of your stylesheets to detect masonry direction. 
+
+
+| version | size |
+|---------|------| 
+| 1.0.0   | 499B |
+| 1.1.1   | 751B |
