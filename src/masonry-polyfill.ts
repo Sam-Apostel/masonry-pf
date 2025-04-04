@@ -25,13 +25,20 @@ function adjustGridItems(grid: HTMLElement) {
   });
 
   const style = getComputedStyle(grid);
-  const columns = style.gridTemplateColumns.split(' ').length;
-  const rows = style.gridTemplateRows.split(' ').length;
+  const columnsRule = getStyleInfo(
+    grid,
+    'grid-template-columns',
+    'gridTemplateColumns',
+  );
+  const columns = columnsRule.split(' ').length;
 
-  if (columns > 1 && rows > 1) return; // not a masonry layout.
-  if (columns <= 1 && rows <= 1) return; // not a masonry layout.
+  const rowsRule = getStyleInfo(grid, 'grid-template-rows', 'gridTemplateRows');
+  const rows = rowsRule.split(' ').length;
 
-  if (columns > 1) {
+  if (rowsRule !== 'masonry' && columnsRule !== 'masonry') return;
+
+  if (rowsRule === 'masonry') {
+    if (columns <= 1) return;
     if (items.length <= columns) return;
 
     const gap = parseFloat(style.rowGap);
@@ -43,6 +50,7 @@ function adjustGridItems(grid: HTMLElement) {
       item.style.setProperty('margin-top', `${prevBottom + gap - top}px`);
     });
   } else {
+    if (rows <= 1) return;
     if (items.length <= rows) return;
 
     const gap = parseFloat(style.columnGap);
@@ -60,4 +68,41 @@ function noop() {}
 
 function isHTMLElement(element: ChildNode): element is HTMLElement {
   return element.nodeType === 1;
+}
+
+function getStyleInfo(
+  el: HTMLElement,
+  property: 'grid-template-columns' | 'grid-template-rows',
+  attribute: 'gridTemplateColumns' | 'gridTemplateRows',
+) {
+  const inline = el.style[attribute];
+  const computedValue = getComputedStyle(el)[attribute];
+
+  // First check inline style
+  if (inline) return computedValue;
+
+  // Then check stylesheets
+  const isExplicit = (() => {
+    for (const sheet of document.styleSheets) {
+      let rules;
+      try {
+        rules = sheet.cssRules;
+      } catch (e) {
+        continue; // CORS-restricted stylesheet
+      }
+      if (!rules) continue;
+
+      for (const rule of rules) {
+        if (!(rule instanceof CSSStyleRule)) continue;
+        if (!el.matches(rule.selectorText)) continue;
+
+        const val = rule.style.getPropertyValue(property);
+        if (val) return true;
+      }
+    }
+    return false;
+  })();
+
+  if (isExplicit) return computedValue;
+  return 'masonry';
 }

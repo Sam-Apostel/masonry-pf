@@ -58,17 +58,27 @@ You can use this package without any build tooling. Paste this in an html file a
   <script type="importmap">
     {
       "imports": {
-        "masonry-pf": "https://esm.run/masonry-pf@1.1.0"
+        "masonry-pf": "https://esm.run/masonry-pf@1.1.1"
       }
     }
   </script>
   <style>
-    #gallery {
+    .masonry {
       display: grid;
-      grid-template-columns: repeat(3, 200px);
-      grid-template-rows: masonry;
       gap: 1rem;
       justify-content: center;
+      margin-top: 1rem;
+    }
+
+    #horizontal {
+      grid-template-columns: masonry;
+      grid-template-rows: repeat(3, 200px);
+      grid-auto-flow: column;
+    }
+
+    #vertical {
+      grid-template-columns: repeat(3, 200px);
+      grid-template-rows: masonry;
     }
   </style>
   <script type="module">
@@ -78,7 +88,21 @@ You can use this package without any build tooling. Paste this in an html file a
   </script>
 </head>
 <body>
-  <div id="gallery">
+  <div class="masonry" id="horizontal">
+    <img src="https://picsum.photos/300/200" width="300" />
+    <img src="https://picsum.photos/225/200" width="225" />
+    <img src="https://picsum.photos/150/200" width="150" />
+    <img src="https://picsum.photos/150/200" width="150" />
+    <img src="https://picsum.photos/225/200" width="225" />
+    <img src="https://picsum.photos/300/200" width="300" />
+    <img src="https://picsum.photos/300/200" width="300" />
+    <img src="https://picsum.photos/225/200" width="225" />
+    <img src="https://picsum.photos/150/200" width="150" />
+    <img src="https://picsum.photos/150/200" width="150" />
+    <img src="https://picsum.photos/225/200" width="225" />
+    <img src="https://picsum.photos/300/200" width="300" />
+  </div>
+  <div class="masonry" id="vertical">
     <img src="https://picsum.photos/200/300" height="300" />
     <img src="https://picsum.photos/200/225" height="225" />
     <img src="https://picsum.photos/200/150" height="150" />
