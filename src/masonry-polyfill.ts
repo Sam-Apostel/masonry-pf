@@ -4,8 +4,9 @@ export function registerMasonry(gridContainer: HTMLElement | null) {
   const style = getComputedStyle(gridContainer);
 
   // exit if masonry is supported
-  if (style.gridTemplateRows === 'masonry') return noop;
-  if (style.gridTemplateColumns === 'masonry') return noop;
+  if (style.display === 'grid-lanes' || style.display === 'masonry' || style.gridTemplateRows === 'masonry' || style.gridTemplateColumns === 'masonry') {
+    return noop;
+  }
 
   const resizeObserver = new ResizeObserver(() =>
     requestAnimationFrame(() => adjustGridItems(gridContainer)),
